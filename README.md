@@ -1,0 +1,27 @@
+docker-postgresql-server
+========================
+
+This project create a Postgresql server in docker container.
+The container is based on [docker-base](https://github.com/fferriere/docker-base) image.
+It use volume from [docker-postgresql-data](https://github.com/fferriere/docker-postgresql-data).
+
+Build
+-----
+
+To build container run `build.sh` script. You can customize image name and container name with `FFERRIERE_PG_SERVER_IMAGE` variable. Example :
+```
+$ FFERRIERE_PG_SERVER_IMAGE="prefix/pg-server" ./build.sh
+```
+
+Run
+---
+
+To run container execute `run.sh` script.
+
+If you have customized build of [docker-postgresql-data](https://github.com/fferriere/docker-postgresql-data) you should give `FFERRIERE_PG_DATA_NAME` variable.
+
+You can customize container with `FFERRIERE_PG_SERVER_NAME`. Example :
+```
+$ FFERRIERE_PG_SERVER_IMAGE="prefix/pg-server" FFERRIERE_PG_SERVER_NAME="prefx-pg-server" \
+    FFERRIERE_PG_DATA_NAME="prefix-pg-data" ./run.sh
+```
