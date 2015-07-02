@@ -26,7 +26,19 @@ if [ "$NB_ROWS" -gt 0 ]; then
     docker rm "$NAME"
 fi
 
+ENV_ARGS=''
+if [ -n "$FFERRIERE_PG_SERVER_USER" ]; then
+    ENV_ARGS="$ENV_ARGS -e PG_USER=$FFERRIERE_PG_SERVER_USER"
+fi
+if [ -n "$FFERRIERE_PG_SERVER_PASS" ]; then
+    ENV_ARGS="$ENV_ARGS -e PG_PASS=$FFERRIERE_PG_SERVER_PASS"
+fi
+if [ -n "$FFERRIERE_PG_SERVER_DBNAME" ]; then
+    ENV_ARGS="$ENV_ARGS -e PG_DBNAME=$FFERRIERE_PG_SERVER_DBNAME"
+fi
+
 docker run -d \
   --name $NAME \
   --volumes-from $DATA_NAME \
+  $ENV_ARGS \
   $IMAGE $@
