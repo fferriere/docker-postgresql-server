@@ -37,7 +37,12 @@ if [ -n "$FFERRIERE_PG_SERVER_DBNAME" ]; then
     ENV_ARGS="$ENV_ARGS -e PG_DBNAME=$FFERRIERE_PG_SERVER_DBNAME"
 fi
 
-docker run -d \
+RUN_ARGS='-d'
+if [ $(echo "$@" | grep "bash" | wc -l) -gt 0 ]; then
+    RUN_ARGS='--rm -ti'
+fi
+
+docker run $RUN_ARGS \
   --name $NAME \
   --volumes-from $DATA_NAME \
   $ENV_ARGS \
