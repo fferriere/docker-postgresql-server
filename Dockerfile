@@ -1,4 +1,4 @@
-FROM fferriere/base
+FROM fferriere/postgresql-base
 
 MAINTAINER ferriere.florian@gmail.com
 
