@@ -2,14 +2,6 @@ FROM fferriere/base
 
 MAINTAINER ferriere.florian@gmail.com
 
-# add pgdg repository
-ADD files/apt-pgdg.list /etc/apt/sources.list.d/pgdg.list
-
-# get GPG key of pgdg repository
-RUN wget --quiet -O - http://www.postgresql.org/media/keys/ACCC4CF8.asc | \
-  apt-key add -
-
-# install of postgres
 RUN apt-get update && apt-get install -y postgresql-9.4 postgresql-client-9.4 postgresql-contrib-9.4
 
 ADD files/entrypoint.sh /usr/local/bin/entrypoint.sh
