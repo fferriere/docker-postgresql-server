@@ -23,7 +23,7 @@ if [ ! -d /var/lib/postgresql/9.4/main ]; then
     # init postgresql
     /etc/init.d/postgresql start && \
         psql --command "CREATE USER $MY_USER WITH SUPERUSER PASSWORD '$MY_PASS';" && \
-        createdb -O $MY_USER -E UTF8 -T template0 $MY_DBNAME && \
+        createdb -O "$MY_USER" -E UTF8 -T template0 "$MY_DBNAME" && \
         /etc/init.d/postgresql stop
 
     # allow host connection with md5 password
