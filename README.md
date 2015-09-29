@@ -2,7 +2,7 @@ docker-postgresql-server
 ========================
 
 This project create a Postgresql server in docker container.
-The container is based on [docker-postgresql-base](https://github.com/fferriere/docker-postgresl-base) image.
+The container is based on [docker-postgresql-base](https://github.com/fferriere/docker-postgresql-base) image.
 It use volume from [docker-postgresql-data](https://github.com/fferriere/docker-postgresql-data).
 
 Build
