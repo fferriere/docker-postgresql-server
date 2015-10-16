@@ -22,6 +22,11 @@ If you have customized build of [docker-postgresql-data](https://github.com/ffer
 
 You can customize container's name with `FFERRIERE_PG_SERVER_NAME`. Example :
 ```
-$ FFERRIERE_PG_SERVER_IMAGE="prefix/pg-server" FFERRIERE_PG_SERVER_NAME="prefx-pg-server" \
+$ FFERRIERE_PG_SERVER_IMAGE="prefix/pg-server" FFERRIERE_PG_SERVER_NAME="prefix-pg-server" \
     FFERRIERE_PG_DATA_NAME="prefix-pg-data" ./run.sh
+```
+
+You can also add docker options on run with `FFERRIERE_PG_SERVER_DOCKER_ARGS` variable. Example :
+```
+    FFERRIERE_PG_SERVER_DOCKER_ARGS='-p 5432:5432' ./run.sh
 ```

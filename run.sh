@@ -42,6 +42,10 @@ if [ $(echo "$@" | grep "bash" | wc -l) -gt 0 ]; then
     RUN_ARGS='--rm -ti'
 fi
 
+if [ -n "$FFERRIERE_PG_SERVER_DOCKER_ARGS" ]; then
+    RUN_ARGS="$RUN_ARGS $FFERRIERE_PG_SERVER_DOCKER_ARGS"
+fi
+
 docker run $RUN_ARGS \
   --name $NAME \
   --volumes-from $DATA_NAME \
