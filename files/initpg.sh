@@ -33,3 +33,5 @@ if [ ! -d /var/lib/postgresql/9.4/main ]; then
     echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
 
 fi
+
+chmod -R 700 /var/lib/postgresql

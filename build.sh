@@ -8,4 +8,3 @@ if [ -n "$FFERRIERE_PG_SERVER_IMAGE" ]; then
 fi
 
 docker build -t $NAME $@ $THIS_PATH/.
- 
