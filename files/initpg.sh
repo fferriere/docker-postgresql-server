@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -d /var/lib/postgresql/9.4/main ]; then
+if [ ! -d /var/lib/postgresql/9.5/main ]; then
 
     MY_USER=docker
     MY_PASS=docker
@@ -18,7 +18,7 @@ if [ ! -d /var/lib/postgresql/9.4/main ]; then
         MY_DBNAME="$PG_DBNAME"
     fi
 
-    /usr/lib/postgresql/9.4/bin/pg_ctl initdb -D /var/lib/postgresql/9.4/main
+    /usr/lib/postgresql/9.5/bin/pg_ctl initdb -D /var/lib/postgresql/9.5/main
 
     # init postgresql
     /etc/init.d/postgresql start && \
@@ -27,10 +27,10 @@ if [ ! -d /var/lib/postgresql/9.4/main ]; then
         /etc/init.d/postgresql stop
 
     # allow host connection with md5 password
-    echo "host $MY_DBNAME  $MY_USER    0.0.0.0/0  md5" >> /etc/postgresql/9.4/main/pg_hba.conf
+    echo "host $MY_DBNAME  $MY_USER    0.0.0.0/0  md5" >> /etc/postgresql/9.5/main/pg_hba.conf
 
     # allow connection from all IP address
-    echo "listen_addresses='*'" >> /etc/postgresql/9.4/main/postgresql.conf
+    echo "listen_addresses='*'" >> /etc/postgresql/9.5/main/postgresql.conf
 
 fi
 
